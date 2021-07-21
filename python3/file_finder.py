@@ -3,6 +3,7 @@
 
 import os
 import sys # To get the shell command arguments.
+import getopt
 
 tot = 0 # setup a counter to let me know recurise funcall times. [Debug] 
 
@@ -19,3 +20,9 @@ def fdr(start, kw):
     except Exception as ecp:
         print("Error")
         raise ecp
+
+def main(argv):
+    startDir = "."
+    keyword = "main.cc"
+    try:
+        opts, args = getopt.getopt(argv, "s:t:", ["start=", "target="])
