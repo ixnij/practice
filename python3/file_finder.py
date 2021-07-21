@@ -14,7 +14,7 @@ def fdr(start, kw):
             i = os.path.join(start, i)
             if os.path.isdir(i):
                 fdr(i, kw)
-                tot++
+                tot += 1
             elif os.path.split(i)[1] == kw:
                 print(i)
     except Exception as ecp:
@@ -26,3 +26,16 @@ def main(argv):
     keyword = "main.cc"
     try:
         opts, args = getopt.getopt(argv, "s:t:", ["start=", "target="])
+
+    except:
+        print("Error")
+
+    for opt, arg in opts:
+        if opt in ["-s", "--start"]:
+            startDir = arg
+        elif opt in ["-t", "--target"]:
+            keyword = arg
+    fdr(startDir, keyword)        
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
