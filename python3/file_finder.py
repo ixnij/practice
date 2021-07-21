@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import sys # To get the shell command arguments.
 
 tot = 0 # setup a counter to let me know recurise funcall times. [Debug] 
 
