@@ -5,8 +5,6 @@ import os
 import sys # To get the shell command arguments.
 import getopt
 
-tot = 0 # setup a counter to let me know recurise funcall times. [Debug] 
-
 def fdr(start, kw):
     try:
         pwd = os.path.abspath(start) 
@@ -14,7 +12,6 @@ def fdr(start, kw):
             i = os.path.join(start, i)
             if os.path.isdir(i):
                 fdr(i, kw)
-                tot += 1
             elif os.path.split(i)[1] == kw:
                 print(i)
     except Exception as ecp:
