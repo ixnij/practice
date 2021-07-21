@@ -20,7 +20,7 @@ def fdr(start, kw):
 
 def main(argv):
     startDir = "."
-    keyword = "main.cc"
+    keyword = "README.md"
     try:
         opts, args = getopt.getopt(argv, "s:t:", ["start=", "target="])
 
