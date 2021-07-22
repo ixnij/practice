@@ -8,6 +8,8 @@ int gcd(const int& a, const int& b) {
     }
 }
 
+// complite command: clang -o ${filename.noext} ${filename} -std=c++17 -lstdc++
+
 int main([[maybe_unused]] int argc, [[maybe_unused]] char* const argv[]) {
     int num_one = 1230;
     int num_two = 121000;
