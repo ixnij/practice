@@ -77,17 +77,18 @@ template<typename T, int n>
 class ya_array { // Yet Another Array
     private:
         T* ary;    
+        std::vector<T> vtr;
     public:
         ya_array() {
             ary = new T[n];
+            vtr.push_back(n);
         }  
-        ya_array(std::initializer_list<T> ilt) {
+        ya_array(std::initializer_list<T> ilt) : vtr(ilt) {
             ary = new T[n];
-            ary = ilt;
             // Wrong. I don't know it's right or invild.
         }
         std::size_t size() {
-            return sizeof(ary);
+            return vtr.size();
         }
         // wrong.
         virtual ~ya_array() {
@@ -104,5 +105,5 @@ int main(void) {
     ya_array<int, 5> ay;
     std::cout << ay.size() << std::endl;
     ya_array<int, 4> artt { 1, 2, 3, 44 };
-    std::cout << artt.size() << flush << "\n";
+    std::cout << artt.size() << std::flush << "\n";
 } 
