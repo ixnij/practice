@@ -1,5 +1,14 @@
+/*
+ * @author Thomas Wu <ixnij.wu@outlook.com>
+ * @filename rtti_virtual_function_rvalue_ref_std_move_with_stl.cc
+ *
+ * */
+
 #include <iostream>
 #include <typeinfo>
+
+#include <vector>
+#include <initializer_list>
 
 class p {
     int private_variable_in_class;
@@ -37,6 +46,7 @@ class ffmpef_plus : public ffmpef {
         int* ptr_newer;
     public:
        virtual int fut(int one) override { return cont + one; }
+       unsigned qu() { return cont; }
        ffmpef_plus(int arg) : ffmpef(arg), cont(arg) {
            ptr_newer = new int;
            *ptr_newer = cont; 
@@ -63,7 +73,36 @@ ffmpef_plus& ffmpef_plus::operator=(ffmpef_plus&& f) noexcept {
     return *this;
 }
 
+template<typename T, int n>
+class ya_array { // Yet Another Array
+    private:
+        T* ary;    
+    public:
+        ya_array() {
+            ary = new T[n];
+        }  
+        ya_array(std::initializer_list<T> ilt) {
+            ary = new T[n];
+            ary = ilt;
+            // Wrong. I don't know it's right or invild.
+        }
+        std::size_t size() {
+            return sizeof(ary);
+        }
+        // wrong.
+        virtual ~ya_array() {
+            delete [] ary;
+        }
+}; // do not forget ;
+
 int main(void) {
     ffmpef* base_class = new ffmpef(45);
     ffmpef_plus* fme = new ffmpef_plus(4);
-}
+    base_class = dynamic_cast<ffmpef* > (fme);
+    std::cout << base_class -> fut(2) << std::endl;
+    std::cout << typeid(int).name() << std::endl;
+    ya_array<int, 5> ay;
+    std::cout << ay.size() << std::endl;
+    ya_array<int, 4> artt { 1, 2, 3, 44 };
+    std::cout << artt.size() << flush << "\n";
+} 
