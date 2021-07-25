@@ -1,3 +1,4 @@
 a.out
-#.out
+*.out
 build/
+*.exe
