@@ -12,6 +12,7 @@
 
 #include "class_p.h"
 #include "ffmpef.h"
+#include "ya_array.h"
 
 int main(void) {
     ffmpef* base_class = new ffmpef(45);
