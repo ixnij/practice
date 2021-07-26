@@ -24,9 +24,9 @@ class p {
 
 class anotr : public p {
     public:
-        virtual int pointered(int* p) { return *p; }
-        virtual inline int max(int, int);
-        virtual inline int counter() override;
+    virtual int pointered(int* p) override { return *p; }
+    virtual inline int max(int, int) override;
+    virtual inline int counter() override;
 };
 
 class ffmpef {
@@ -37,7 +37,7 @@ class ffmpef {
 //        ffmpef() = default;
         ffmpef(int value) { ptr_t = new int; *ptr_t = value;}
         virtual ~ffmpef() { delete ptr_t; }
-        virtual int fut(int one) { return max + one; } 
+        virtual int fut(int one) { return max + one; }
 };
 
 class ffmpef_plus : public ffmpef {
@@ -49,7 +49,7 @@ class ffmpef_plus : public ffmpef {
        unsigned qu() { return cont; }
        ffmpef_plus(int arg) : ffmpef(arg), cont(arg) {
            ptr_newer = new int;
-           *ptr_newer = cont; 
+           *ptr_newer = cont;
        }
 //       ffmpef_plus() = default;
        virtual ~ffmpef_plus() {
@@ -65,7 +65,7 @@ inline int anotr::counter() { return p::counter(); }
 ffmpef_plus& ffmpef_plus::operator=(ffmpef_plus&& f) noexcept {
     if ( f.ptr_newer == this -> ptr_newer && f.cont == this -> cont) {
         return *this;
-    }        
+    }
     delete this -> ptr_newer;
     this -> ptr_newer = f.ptr_newer;
     f.ptr_newer = nullptr;
@@ -76,13 +76,13 @@ ffmpef_plus& ffmpef_plus::operator=(ffmpef_plus&& f) noexcept {
 template<typename T, int n>
 class ya_array { // Yet Another Array
     private:
-        T* ary;    
+        T* ary;
         std::vector<T> vtr;
-    public:
-        ya_array() {
-            ary = new T[n];
-            vtr.push_back(n);
-        }  
+public:
+    ya_array() {
+        ary = new T[n];
+        vtr.push_back(n);
+    }
         ya_array(std::initializer_list<T> ilt) : vtr(ilt) {
             ary = new T[n];
             // Wrong. I don't know it's right or invild.
@@ -106,4 +106,4 @@ int main(void) {
     std::cout << ay.size() << std::endl;
     ya_array<int, 4> artt { 1, 2, 3, 44 };
     std::cout << artt.size() << std::flush << "\n";
-} 
+}
