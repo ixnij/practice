@@ -24,7 +24,7 @@ class p {
 
 class anotr : public p {
     public:
-        virtual pointered(int* p) { return *p; }
+        virtual int pointered(int* p) { return *p; }
         virtual inline int max(int, int);
         virtual inline int counter() override;
 };
