@@ -1,4 +1,4 @@
-#ifndef FFMPEF_H 
+#ifndef FFMPEF_H
 #define FFMPEF_H
 
 class ffmpef {
@@ -9,7 +9,7 @@ class ffmpef {
 //        ffmpef() = default;
         ffmpef(int value) { ptr_t = new int; *ptr_t = value;}
         virtual ~ffmpef() { delete ptr_t; }
-        virtual int fut(int one) { return max + one; } 
+        virtual int fut(int one) { return max + one; }
 };
 
 #endif // FFMPEF_H

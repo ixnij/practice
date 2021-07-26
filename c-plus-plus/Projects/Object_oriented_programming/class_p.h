@@ -15,9 +15,9 @@ class p {
 
 class anotr : public p {
     public:
-        virtual pointered(int* p) { return *p; }
-        virtual inline int max(int, int);
-        virtual inline int counter() override;
+    virtual int pointered(int* p) override { return *p; }
+    virtual inline int max(int, int) override;
+    virtual inline int counter() override;
 };
 
 #endif // CLASS_P_H

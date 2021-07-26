@@ -1,9 +1,3 @@
-/*
- * @author Thomas Wu <ixnij.wu@outlook.com>
- * @filename rtti_virtual_function_rvalue_ref_std_move_with_stl.cc
- *
- * */
-
 #include <iostream>
 #include <typeinfo>
 
@@ -12,6 +6,7 @@
 
 #include "class_p.h"
 #include "ffmpef.h"
+#include "ffmpef_plus.h"
 #include "ya_array.h"
 
 int main(void) {
@@ -24,4 +19,4 @@ int main(void) {
     std::cout << ay.size() << std::endl;
     ya_array<int, 4> artt { 1, 2, 3, 44 };
     std::cout << artt.size() << std::flush << "\n";
-} 
+}
