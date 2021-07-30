@@ -6,3 +6,4 @@ def get_gcd(a, b):
         return b
     else:
         return get_gcd(b, a % b)
+
