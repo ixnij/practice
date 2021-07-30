@@ -3,7 +3,7 @@
 using namespace std;
 
 
-template<typename T, typename Arg...>
+template<typename T, typename... Arg>
 void output_arg(const T& val, const Arg&... args) {
     cout << val << endl;
     output_arg(args...);
