@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os
 
@@ -15,3 +15,7 @@ def fdr(start):
         print("Error")
         raise ecp
 
+if __name__ == "__main__":
+    fdr("/")
+else:
+    fdr("/")
