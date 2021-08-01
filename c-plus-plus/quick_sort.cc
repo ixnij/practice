@@ -26,18 +26,16 @@ void qsort(int c[], int l, int r) {
 }
 
 int main(void) {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    cout << "OK" << endl;
-    qsort(a, 0, n - 1);
-    for (int i = 0; i < n; i++)
-    {
-        cout << a[i] << " ";
-    }
+  ios_base::sync_with_stdio(false);
+  cin.tie(nullptr);
+  cout.tie(nullptr);
+  cin >> n;
+  for (int i = 0; i < n; i++) {
+    cin >> a[i];
+  }
+  cout << "OK" << endl;
+  qsort(a, 0, n - 1);
+  for (int i = 0; i < n; i++) {
+    cout << a[i] << " ";
+  }
 }
