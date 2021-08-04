@@ -21,3 +21,21 @@ Some commands, maybe useful.
 ```zsh
 clang++ ${file} -stdlib=libc++ -std=c++20
 ```
+### gcc
+
+[The #pragma patch](https://gcc.gnu.org/legacy-ml/gcc-patches/2008-06/msg01435.html).
+
+```c
+#pragma GCC optimize("O2")
+#include <file>
+
+int main(void) {
+        // ...
+        // snippet
+        // ...
+}
+```
+
+# TODO
+
+Finish all the tests in ACwing.
