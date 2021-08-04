@@ -1,6 +1,6 @@
 # Intro
 
-This is a subproject for the C++.
+This is a subproject for exercise in C++.
 
 ## Note
 
