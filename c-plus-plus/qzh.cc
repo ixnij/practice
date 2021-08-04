@@ -1,3 +1,7 @@
+/*
+ * @filename: 前缀和
+ * */
+
 #include <iostream>
 
 const int N = 1e3 + 10;
@@ -35,3 +39,7 @@ int main() {
         printf("\n");
     }
 }
+
+// Local Variables:
+// coding: utf-8
+// End:
