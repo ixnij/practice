@@ -2,8 +2,7 @@
 
 using namespace std;
 
-template<class T>
-struct stack {
+template <class T> struct stack {
     bool isempty();
     bool pop();
     T top();
@@ -11,5 +10,4 @@ struct stack {
 }
 
 int main(void) {
-
 }

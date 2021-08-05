@@ -9,13 +9,15 @@ int main(void) {
     cin.tie(nullptr), cout.tie(nullptr);
     int n;
     cin >> n;
-    for(int i = 0; i < n; ++ i) {
+    for (int i = 0; i < n; ++i) {
         int x;
         cin >> x;
-        while(tt && stk[tt] >= x) tt --;
-        if (tt) cout << stk[tt] << " ";
-        else cout << "-1 ";
-        stk[++ tt] = x;
+        while (tt && stk[tt] >= x)
+            tt--;
+        if (tt)
+            cout << stk[tt] << " ";
+        else
+            cout << "-1 ";
+        stk[++tt] = x;
     }
-    
 }
