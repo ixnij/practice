@@ -10,7 +10,7 @@
 #include "ffmpef_plus.h"
 #include "ya_array.h"
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] char* const argv[]) {
+int main([[maybe_unused]] int argc, [[maybe_unused]] const char* const argv[]) {
     ffmpef* base_class = new ffmpef(45);
     ffmpef_plus* fme = new ffmpef_plus(4);
     base_class = dynamic_cast<ffmpef* > (fme);
