@@ -1,22 +1,22 @@
 #include <iostream>
 #include <cstring>
 
-constexpr int N = 1e2 / 2+ 10;
+constexpr int N = 500 + 10;
 int m, n;
-int g[N][N], dist[N][N];
+int g[N][N], dist[N];
 bool st[N];
 
 using std::cin;
 using std::cout;
 
 int dijkstra() {
-	memset(dist, 0x3f, sizeof(dist));
+	std::memset(dist, 0x3f, sizeof(dist));
 	dist[1] = 0;
 	
 	for (int i = 0; i < n; ++ i) {
 		int t = -1;
 		for (int j = 1; j <= n; ++ j) {
-			if (!st[j] && (t == -1 || dist[t] > dist[j])
+			if (!st[j] && (t == -1 || dist[t] > dist[j]))
 					t = j;
 		}	
 
