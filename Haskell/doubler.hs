@@ -1,0 +1,1 @@
+doubler x = x + x
