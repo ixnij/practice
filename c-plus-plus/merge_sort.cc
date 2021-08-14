@@ -1,6 +1,7 @@
 #include <iostream>
 
-using namespace std;
+using std::cout;
+using std::cin;
 
 const int N = 10e6 + 10;
 int a[N], tmp[N];
@@ -32,7 +33,7 @@ void merge_sort(int *c, int l, int r) {
 }
 
 int main(void) {
-    ios_base::sync_with_stdio(false);
+    std::ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
     int n;
