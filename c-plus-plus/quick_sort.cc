@@ -1,6 +1,8 @@
 #include <iostream>
+#include <vector>
 
-using namespace std;
+using std::cout;
+using std::cin;
 
 const int N = 10e6 + 10;
 int n, a[N];
@@ -18,7 +20,7 @@ void qsort(int c[], int l, int r) {
             j--;
         while (c[j] > m);
         if (i < j)
-            swap(c[i], c[j]);
+            std::swap(c[i], c[j]);
     }
 
     qsort(c, l, i - 1);
@@ -26,16 +28,16 @@ void qsort(int c[], int l, int r) {
 }
 
 int main(void) {
-    ios_base::sync_with_stdio(false);
+    std::ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
     cin >> n;
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
-    cout << "OK" << endl;
     qsort(a, 0, n - 1);
     for (int i = 0; i < n; i++) {
         cout << a[i] << " ";
     }
+	cout << "\n";
 }
