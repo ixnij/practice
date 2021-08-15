@@ -7,6 +7,7 @@ using namespace std;
 int main() {
     srand((unsigned)time(nullptr));
     const int size = 200, start = 1, end = 99;
+    cout << size << endl;
     for (int i = 0; i < size; ++i) {
         cout <<  rand() % (end - start + 1) + start << " ";
     }

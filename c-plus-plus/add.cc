@@ -33,7 +33,7 @@ int main() {
         b.push_back(B[i] - '0');
     }
 
-    auto c = add(a, b);
+    vector<int> c = add(a, b);
     for (int i = c.size() - 1; i >= 0; --i) {
         cout << c[i];
     }

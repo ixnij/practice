@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 
-constexpr int N = 500 + 10;
+const int N = 500 + 10;
 int m, n;
 int g[N][N], dist[N];
 bool st[N];
