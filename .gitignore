@@ -1,5 +1,10 @@
+*.out
+*.o
+build/
+*.exe
 *~
-.DS_Store
-.vscode/
-.idea/
+\#*
 .ccls-cache/
+*.hi
+in
+out
