@@ -18,7 +18,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] const char* const argv[]) {
     std::cout << typeid(int).name() << std::endl;
     ya_array<int, 5> ay;
     std::cout << ay.size() << std::endl;
-    ya_array<int, 4> artt { 1, 2, 3, 44 };
     std::cout << artt.size() << std::flush << "\n";
     std::array<int, 8> ars {1, 2, 3, 4, 5, 6, 7, 8};
     for (auto itr = ars.begin(); itr != ars.end(); ++itr) {

@@ -17,7 +17,7 @@ public:
   }
   //       ffmpef_plus() = default;
   virtual ~ffmpef_plus() { delete ptr_newer; }
-  ffmpef_plus &operator=(ffmpef_plus &&) noexcept;
+  ffmpef_plus &operator = (ffmpef_plus &&);
 };
 
 #endif // FFMPEF_PLUS_H
