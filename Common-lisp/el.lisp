@@ -29,3 +29,7 @@
 	   (or fc (setq fc 5))
 	   (message "Hey, %s!" fc)))
 (funcall fn)
+(defconst mirror "$$$$$$sadf"
+  "This is doc string.")
+
+(funcall)
