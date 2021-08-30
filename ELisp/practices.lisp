@@ -60,11 +60,49 @@
 (let ((rmb (random)))
   (message (format "This is your money: %d" (mod rmb 12))))
 
+(setq docstring "This is a string for test.")
 
+(defvar tests/foo-string "abc\000abc" docstring)
+
+?A ; => 65
+(- ?z ?a) ; => 25
+(- ?z ?a) ; => same as above.
+?\. ; => 46
+?\( ; => 40
+?\) ; => 41
+?\* ; => 42
+?\# ; => 35
+?i ; => 105
+?\C-i ; => 9
+
+(concat "hello" "," " " "world")
+(vconcat tests/foo-string)
+
+(downcase "The cat in the hat")         ; => "the cat in the hat"
+(downcase ?X)                           ; => 120
+(upcase "The cat in the hat")           ; => "THE CAT IN THE HAT"
+(upcase ?x)                             ; => 88
+(capitalize "The CAT in tHe hat")       ; => "The Cat In The Hat"
+(upcase-initials "The CAT in the hAt")  ; => "The CAT In The HAt"
+
+(substring "Haskell-mode" 0 7) ; expected: Haskell
+
+(cons 'a 'b)
+'(a . b)
+(consp '(a . b))
+(consp '(1 . 2))
+(listp '(1243 . nil))
+(consp '(1 2 . (3 . 4)))
+'(1 2 . (3 . 4))
+'(1 2 3 4)
+
+(set (quote mirs) nil)
+(setq mirs (vector 1 2 3 4 6 5))
+(aref mirs 5)
 
 ;;; Local Variables:
 ;;; coding: utf-8
-;;; mode: emacs-lisp-mode
+;;; mode: emacs-lisp
 ;;; End:
 
 (provide 'practices)
