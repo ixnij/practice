@@ -100,6 +100,15 @@
 (setq mirs (vector 1 2 3 4 6 5))
 (aref mirs 5)
 
+(let ((count 5)) (idx 0))
+  (while (< idx count)
+    (message (format "This is the %d times.\n" (1+ idx)))
+    (setq idx (1+ idx))))
+
+(symbolp 1+)
+(symbolp '1+)
+(symbolp '+1)
+
 ;;; Local Variables:
 ;;; coding: utf-8
 ;;; mode: emacs-lisp
