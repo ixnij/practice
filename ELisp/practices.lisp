@@ -208,6 +208,13 @@
 'pr/helo2
 (message (format "%S" ps/helo2))
 
+;; (defmacro yet-another-funcall ())
+
+(defun hello ()
+  (message "Hello"))
+
+(funcall (function hello))
+
 ;; end.
 
 ;;; Local Variables:
