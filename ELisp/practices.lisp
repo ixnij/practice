@@ -96,7 +96,6 @@
 (setq mirs (vector 1 2 3 4 6 5))
 (aref mirs 5)
 
-
 (symbolp 1+)
 (symbolp '1+)
 (symbolp '+1)
@@ -135,6 +134,7 @@
 `(1 2 3 ,(+ 1 2) ,@(+ 1 2 3))
 
 (defmacro my-wh (cond &rest body)
+  "This is a Lisp Macro, not a function."
   `(if ,cond
        (progn ,@body)))
 
@@ -143,6 +143,28 @@
 (macroexpand (my-wh (equal 1 1) (message "Yes")))
 
 (when (equal 1 1) (message "Yes"))
+
+(defmacro my-unless (cond &rest body)
+  "This is a Lisp Macro. Using `or'
+
+\(fn COND BODY...)"
+  `(and ,cond (progn ,@body)))
+
+(my-unless (equal 1 1)
+	   (message "Yes"))
+
+(eq 1 1)
+(eq 1.02 1.1)
+(eq 1.0 1.1)
+
+(eq 1.0 1)
+(equal 1.0 1)
+
+(string= "Hello" "Hello")
+
+(string> "a" "Z") ; ASCII code
+
+(equal "Hello" "Hello")
 
 ;;; Local Variables:
 ;;; coding: utf-8
