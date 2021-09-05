@@ -1,4 +1,4 @@
-;;; Practices.lisp --- Just for practice
+;;; Practices.lisp --- Just for practice  -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -165,6 +165,23 @@
 (string> "a" "Z") ; ASCII code
 
 (equal "Hello" "Hello")
+
+(defun switch-buffers-f ()
+  (interactive)
+  (with-current-buffer (erase-buffer)
+    (insert "Hello, World!")))
+
+(cons 1 2)
+'(1 . 2)
+'(1 . (2 . (3 . (4 . (5 . nil)))))
+
+(cons 1 (cons 2 (cons 3 4)))
+(list 1 2 3 4)
+(car (list 1 2 3 4))
+(cdr (list 1 2 3 4))
+(setq ls (read))
+(unintern "ls")
+(intern-soft "ls")
 
 ;;; Local Variables:
 ;;; coding: utf-8
