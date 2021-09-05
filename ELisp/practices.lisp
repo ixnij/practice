@@ -35,10 +35,6 @@
 (or 0 (format "HGHH"))
 (or () (format "HGHH"))
 
-(defun nf (num)
-  "Just for nf."
-  )
-
 (integerp 4)
 (integerp 4.4)
 (floatp 4.4)
@@ -100,14 +96,53 @@
 (setq mirs (vector 1 2 3 4 6 5))
 (aref mirs 5)
 
-(let ((count 5)) (idx 0))
-  (while (< idx count)
-    (message (format "This is the %d times.\n" (1+ idx)))
-    (setq idx (1+ idx))))
 
 (symbolp 1+)
 (symbolp '1+)
 (symbolp '+1)
+
+(cons 1 2)
+(cons 1 '(1 2))
+'macro
+(intern-soft "macro")
+(unintern "macro")
+(intern-soft "macro")
+(setq var 0)
+(mapatoms (lambda (s)
+	    (let ((cnt 0))
+	      (set 'cnt (1+ cnt)))))
+(defun mr (s)
+(setq var (1+ var)))
+
+(mapatoms 'mr)
+(print var)
+(intern-soft "obarray")
+(length obarray)
+
+(apply '+ 1 2 '(3 4))
+
+(setq pre/my-local-variable (make-vector 5 34))
+
+(message (format "This is the local variable that defined by myself: %d" (nth 0 pre/my-local-variable)))
+
+;; test back quote
+
+'(+ 1 43)
+'(1 2 3 (+ 1 2))
+`(1 2 3)
+`(1 2 3 (+ 1 2) (1+ 2O))
+'(1234 1243 (+ 122 3) (1+ 4) (\ 1 1))
+`(1 2 3 ,(+ 1 2) ,@(+ 1 2 3))
+
+(defmacro my-wh (cond &rest body)
+  `(if ,cond
+       (progn ,@body)))
+
+(my-wh (equal 1 1) (message "Yes"))
+
+(macroexpand (my-wh (equal 1 1) (message "Yes")))
+
+(when (equal 1 1) (message "Yes"))
 
 ;;; Local Variables:
 ;;; coding: utf-8
