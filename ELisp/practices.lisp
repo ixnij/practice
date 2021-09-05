@@ -183,6 +183,33 @@
 (unintern "ls")
 (intern-soft "ls")
 
+(defmacro have-a-macro (&rest body)
+  `(progn (message "Begin a new line:")
+	  ,@body
+	  (message "End:")))
+
+(macroexpand (have-a-macro (message "Hello")))
+
+(have-a-macro
+ (message "Hello"))
+
+(defun res ()
+  '(hello))
+
+(setq pr/helo (res))
+'helo
+
+;; mistakes
+
+(defun res2 ()
+  `(hello))
+
+(setq pr/helo2 (res2))
+'pr/helo2
+(message (format "%S" ps/helo2))
+
+;; end.
+
 ;;; Local Variables:
 ;;; coding: utf-8
 ;;; mode: emacs-lisp
