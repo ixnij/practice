@@ -215,7 +215,31 @@
 
 (funcall (function hello))
 
+'(hello-list
+  :name 4
+  :function f
+  key
+  )
+?A ; 65
+?a ; 97
+xo
 ;; end.
+
+(setq pr/maker (vector 124 3124 49 12 94 23412 34912390 41 234 1234129 234141 42949124 12))
+
+(elt pr/maker 3)
+
+(= (elt pr/maker 3) 12)
+
+(concat "hello"
+	" "
+        "world!")
+
+(append '(1 2 3) '(4 . nil))
+(append pr/maker nil)
+(append pr/maker 4)
+
+(vconcat [1 2] [3 4])
 
 ;;; Local Variables:
 ;;; coding: utf-8
