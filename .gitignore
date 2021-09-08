@@ -1,10 +1,23 @@
+# On unix
 *.out
 *.o
+
+# For CMake
 build/
+
+# On windows
+
 *.exe
+
+# For emacs, vim
 *~
 \#*
+
+# For ccls (language server)
 .ccls-cache/
+
+# For ghc
 *.hi
+
 in
 out
