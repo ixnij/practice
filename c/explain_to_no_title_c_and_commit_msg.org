@@ -1,0 +1,4 @@
+#+TiTLE: This is macro, not extensions....
+#+AUTHOR: Thomas Wu <ixnij.wu@gmail.com> 
+
+See [[https://docs.microsoft.com/zh-cn/cpp/preprocessor/predefined-macros?view=msvc-160][Doc From Microsoft.]]
