@@ -1,8 +1,9 @@
+#!/usr/bin/env sbcl --script
 
 (defun power (x)
-  (if (or (equal x 0) (equal x 1))
-      1
-      (power (- x 1))))
+  (if (or (= x 0) (= x 1)) 1
+      (* x (power (- x 1)))))
 
-(defparameter ff 4)
-(format t "~A ~%" (power ff))
+(defconstant *ff* 20)
+
+(format t "~A ~%" (power *ff*))

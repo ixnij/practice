@@ -2,7 +2,10 @@
 #include <string>
 #include <vector>
 
-using namespace std;
+using std::cout;
+using std::vector;
+using std::string;
+using std::cin;
 
 vector<int> ag(vector<int> &A, int B) {
     vector<int> C;
@@ -17,7 +20,7 @@ vector<int> ag(vector<int> &A, int B) {
     return C;
 }
 
-int main() {
+int main(int argc, const char* const argv[]) {
     string a;
     int b;
     cin >> a >> b;

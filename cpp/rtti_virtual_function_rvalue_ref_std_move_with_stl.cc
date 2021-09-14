@@ -102,8 +102,4 @@ int main(void) {
     base_class = dynamic_cast<ffmpef *>(fme);
     std::cout << base_class->fut(2) << std::endl;
     std::cout << typeid(int).name() << std::endl;
-    ya_array<int, 5> ay;
-    std::cout << ay.size() << std::endl;
-    ya_array<int, 4> artt{1, 2, 3, 44};
-    std::cout << artt.size() << std::flush << "\n";
 }

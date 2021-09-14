@@ -233,7 +233,7 @@ xo
 
 (concat "hello"
 	" "
-        "world!")
+	"world!")
 
 (append '(1 2 3) '(4 . nil))
 (append pr/maker nil)
@@ -241,10 +241,36 @@ xo
 
 (vconcat [1 2] [3 4])
 
+(concat "String one" " two")
+
+(defmacro my-def-macro (name arg &rest body)
+  "My simple defmacro."
+  `(defmacro name (,arg) ,@body))
+
+(macroexpand-all (defun Hello () (message "Hello, World!")))
+(macroexpand (funcall (lambda () (format "Hello"))))
+
+(length obarray)
+
+(defcustom my-custom-variable 0
+  "This is my first custom variable.")
+
+(setq ya (lambda (_) (message "HEEE")))
+
+(ya)
+
+(funcall ya 4)
+
+#'ya
+
+#'(lambda ())
+
+
+
 ;;; Local Variables:
 ;;; coding: utf-8
 ;;; mode: emacs-lisp
 ;;; End:
 
 (provide 'practices)
-;;; practices.lisp ends here
+;;; practices.el ends here
