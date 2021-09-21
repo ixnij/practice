@@ -5,6 +5,6 @@ repeat' a b
 
 maximum' :: (Ord a) => [a] -> a
 maximum' [] = error "Empty"
-maximum' [x] =
+maximum' [x] = x
 maximum' (a:b) =
   max a (maximum' b)
