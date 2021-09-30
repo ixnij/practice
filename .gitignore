@@ -21,3 +21,7 @@ build/
 
 in
 out
+
+# On darwin
+
+.DS_store
