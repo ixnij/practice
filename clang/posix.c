@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void get_sytem_info();
 void command_args(int args, const char *argv[], void (*fn)());
@@ -20,7 +21,7 @@ void get_sytem_info() {
 }
 
 void command_args(int args, const char *argv[], void (*fn)()) {
-    if (args == 1)
+    if (args == 1 && strcmp(argv[1], "getenv"))
 	exit(1);
     fn();
 }
