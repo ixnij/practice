@@ -14,10 +14,10 @@ void get_sytem_info() {
     const char *HOME = getenv("HOME");
     const char *PATH = getenv("PATH");
     const char *SHELL = getenv("SHELL");
-    printf("--- BEGIN OF ENVIRONMENT VARIABLES ---\n\n");
-    printf("Your HOME is: %s\nYour PATH: %s\nYour SHELL: %s\n\n", HOME, PATH,
+    printf("=== BEGIN OF ENVIRONMENT VARIABLES ===\n\n");
+    printf("HOME: %s\nPATH: %s\nSHELL: %s\n\n", HOME, PATH,
 	   SHELL);
-    printf("--- END OF ENVIRONMENT VARIABLES ---\n");
+    printf("=== END OF ENVIRONMENT VARIABLES ===\n");
 }
 
 void command_args(int args, const char *argv[], void (*fn)()) {
