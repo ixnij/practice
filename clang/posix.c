@@ -11,9 +11,9 @@ int main(int argc, const char *argv[]) {
 }
 
 void get_sytem_info() {
-    char *HOME = getenv("HOME");
-    char *PATH = getenv("PATH");
-    char *SHELL = getenv("SHELL");
+    const char *HOME = getenv("HOME");
+    const char *PATH = getenv("PATH");
+    const char *SHELL = getenv("SHELL");
     printf("--- BEGIN OF ENVIRONMENT VARIABLES ---\n\n");
     printf("Your HOME is: %s\nYour PATH: %s\nYour SHELL: %s\n\n", HOME, PATH,
 	   SHELL);
@@ -21,9 +21,12 @@ void get_sytem_info() {
 }
 
 void command_args(int args, const char *argv[], void (*fn)()) {
-    if (args == 1 && strcmp(argv[1], "getenv"))
+    if (args == 1)
 	exit(1);
-    fn();
+    else if (!strcmp(argv[1], "getenv")) {
+	fn();
+	printf("Success.\n");
+    }
 }
 
 // Local Variables:
