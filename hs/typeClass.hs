@@ -1,5 +1,5 @@
-data LongTypeClassName = LongTypeClassName String deriving (Show, Eq, Ord)
-data Z = Z String Int deriving (Show, Eq, Ord)
+data LongTypeClassName = LongTypeClassName String deriving (Show, Eq, Ord, Read)
+data Z = Z String Int deriving (Show, Eq, Ord, Read)
 
 data Re = Re { name:: String
              , hook :: String -- The name of "::" is "Paamayim Nekudotayim".

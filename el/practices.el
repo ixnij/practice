@@ -264,13 +264,10 @@ xo
 #'ya
 
 #'(lambda ())
-
-
-
-;;; Local Variables:
+(provide 'practices)
+;;;; Local Variables:
 ;;; coding: utf-8
 ;;; mode: emacs-lisp
 ;;; End:
 
-(provide 'practices)
-;;; practices.el ends here
+;; practices.el ends here
