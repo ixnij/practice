@@ -2,7 +2,7 @@
 
 (define (++ x) (+ x 1))
 
-(define get-the-num (x)
+(define (get-the-num x) 
   (if (or (= x 1) (= x 0))
       1
       (* x (get-the-num (- 1 x)))))
