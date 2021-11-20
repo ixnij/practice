@@ -247,8 +247,9 @@ xo
   "My simple defmacro."
   `(defmacro name (,arg) ,@body))
 
-(macroexpand-all (defun Hello () (message "Hello, World!")))
-(macroexpand (funcall (lambda () (format "Hello"))))
+(macroexpand-all '(defun Hello () (message "Hello, World!")))
+
+(macroexpand '(funcall (lambda () (format "Hello"))))
 
 (length obarray)
 
