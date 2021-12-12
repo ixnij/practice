@@ -1,7 +1,7 @@
 #include <iostream>
 
-using std::cout;
 using std::cin;
+using std::cout;
 
 const int N = 10e6 + 10;
 int a[N], tmp[N];

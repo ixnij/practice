@@ -11,7 +11,7 @@ void init_random(int *tgt, int start, int end, int size) {
     }
 }
 
-int main() {
+int main(int argc, const char **argv) {
     int ary[5];
     init_random(ary, 0, 100, 5);
     for(int i : ary) {
