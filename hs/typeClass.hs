@@ -9,5 +9,10 @@ data Re = Re { name:: String
 type P = Z
 
 data Ya a = Ya a deriving (Show)
-
 type F = Ya Int
+
+data R = R deriving (Show)
+type Circle' = R Double
+
+instance Functor (Either a) where
+  fmap f (Right x) = Right (f x)
