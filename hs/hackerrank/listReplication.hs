@@ -1,7 +1,7 @@
 f :: Int -> [Int] -> [Int]
-f n = foldl (++) [] . map (\x -> [x|_<-[1..n]])
+f n = foldl (++) [] . map (\x -> [ x|_<-[1..n]])
 
--- This part handles the Input and Output and can be used as it is. Do not modify this part.
+-- This part handles the Input and Output and can be used as it is.
 
 main :: IO ()
 main = getContents >>=
