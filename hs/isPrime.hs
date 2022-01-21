@@ -10,3 +10,11 @@ primes = filterPrime [2..]
 filterPrime :: [Integer] -> [Integer]
 filterPrime (p:xs) =
     p : filterPrime [x | x <- xs, x `mod` p /= 0]
+
+main = do
+  nu <- getLine
+  let num = read nu
+  if isPrime num then
+    putStrLn $ nu ++ " is a prime."
+    else
+    putStrLn $ nu ++ " isn't a prime."
