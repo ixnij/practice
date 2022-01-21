@@ -41,6 +41,7 @@ primes = filterPrime [2..]
 filterPrime :: [Integer] -> [Integer]
 filterPrime (p:xs) =
     p : filterPrime [x | x <- xs, x `mod` p /= 0]
+    -- modified from haskell.org :P
 
 main = do
   nu <- getLine
