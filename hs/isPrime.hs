@@ -6,19 +6,36 @@ isPrime x
     | x == 2    = True
     | otherwise = foldl' (\a b -> a && (x `mod` b /= 0)) True [2..(x-1)]
 
-pr :: IO Bool
-pr x y = do
-  putStrLn x
-  return y
+-- pr :: IO Bool
+-- pr x y = do
+--   putStrLn x
+--   return y
 
-{- This function is not complete yet. TODO -}
+isPrime' :: Integer -> IO Bool
 isPrime' x
-    | x < 2     = False
-    | x == 2    = True
-    | otherwise = foldl' m True [2..(x-1)]
-    where m a b = do
+    | x < 2     = return False
+    | x == 2    = return True
+    | otherwise = foldl' m (return True) [2..(x-1)]
+    where m a b =
+            if x `mod` b == 0 then (do
+              putStrLn $ show b
+              return False)
+            else (do
+                a' <- a
+                return $ a' && True)
+
+-- There is another solution.
+isPrime'' :: Integer -> (Maybe Integer, Bool)
+isPrime'' x
+    | x < 2     = (Nothing, False)
+    | x == 2    = (Just 1, True)
+    | otherwise = foldl' m (Nothing, True) [2..(x-1)]
+    where m a b =
             if x `mod` b == 0 then
-              pr (show x ++ " : " ++ show b) -- I can not go on..
+              (Just b, False)
+            else
+              case a of (_, True) -> (Nothing, True)
+                        (something, False) -> (something, False)
 
 primes = filterPrime [2..]
 filterPrime :: [Integer] -> [Integer]
