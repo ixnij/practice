@@ -37,6 +37,15 @@ isPrime'' x
               case a of (_, True) -> (Nothing, True)
                         (something, False) -> (something, False)
 
+wrapped x =
+  case isPrime'' x of (_, True) -> putStrLn $ show x ++ "is a prime."
+                      (Just n, False) ->
+                        let explainString = show x ++
+                              " can't be a prime, " ++
+                              "because it can be divided by " ++
+                              show n ++ "."
+                        in   putStrLn explainString
+
 primes = filterPrime [2..]
 filterPrime :: [Integer] -> [Integer]
 filterPrime (p:xs) =
