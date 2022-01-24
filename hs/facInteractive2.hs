@@ -7,6 +7,6 @@ fac x = x * fac (x - 1)
 main :: IO ()
 main = do
   putStrLn "Please type a number: "
-  someNumber <- readLn
+  someNumber <- getLine
   let prompt = "This is the result: "
-  print $ fac someNumber
+  print $ fac $ read someNumber

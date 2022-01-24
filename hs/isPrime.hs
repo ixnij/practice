@@ -1,5 +1,11 @@
 import Data.List
 
+{-
+
+I think [2..(x-1)] is too ugly.
+
+-}
+
 isPrime :: Integer -> Bool
 isPrime x
     | x < 2     = False
@@ -37,6 +43,7 @@ isPrime'' x
               case a of (_, True) -> (Nothing, True)
                         (something, False) -> (something, False)
 
+wrapped :: Integer -> IO ()
 wrapped x =
   case isPrime'' x of (_, True) -> putStrLn $ show x ++ "is a prime."
                       (Just n, False) ->
