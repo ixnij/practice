@@ -1,3 +1,5 @@
+module IsPrime (isPrime, wrapped) where
+
 import Data.List (foldl')
 
 {-
@@ -8,9 +10,9 @@ I think [2..(x-1)] is too ugly.
 
 isPrime :: Integer -> Bool
 isPrime x
-  | x < 2 = False
-  | x == 2 = True
-  | otherwise = foldl' (\a b -> a && (x `mod` b /= 0)) True [2 .. (x -1)]
+  |     x < 2 = False
+  |     x == 2 = True
+  |     otherwise = foldl' (\a b -> a && (x `mod` b /= 0)) True [2 .. (x -1)]
 
 -- pr :: IO Bool
 -- pr x y = do

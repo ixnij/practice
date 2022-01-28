@@ -32,7 +32,7 @@ void merge_sort(int *c, int l, int r) {
     }
 }
 
-int main(void) {
+int main(int argc, char** argv) {
     std::ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
