@@ -1,18 +1,16 @@
 module IsPrime (isPrime, wrapped) where
 
-import Data.List (foldl')
+import qualified Data.List as L
 
-{-
 
-I think [2..(x-1)] is too ugly.
-
--}
+{- I think [2..(x-1)] is too ugly.
+And, otherwise = True -}
 
 isPrime :: Integer -> Bool
 isPrime x
   |     x < 2 = False
   |     x == 2 = True
-  |     otherwise = foldl' (\a b -> a && (x `mod` b /= 0)) True [2 .. (x -1)]
+  |     otherwise = L.foldl' (\a b -> a && (x `mod` b /= 0)) True [2 .. (x -1)]
 
 -- pr :: IO Bool
 -- pr x y = do
@@ -23,7 +21,7 @@ isPrime' :: Integer -> IO Bool
 isPrime' x
   | x < 2 = return False
   | x == 2 = return True
-  | otherwise = foldl' m (return True) [2 .. (x -1)]
+  | otherwise = L.foldl' m (return True) [2 .. (x -1)]
   where
     m a b =
       if x `mod` b == 0
@@ -43,7 +41,7 @@ isPrime'' :: Integer -> (Maybe Integer, Bool)
 isPrime'' x
   | x < 2 = (Nothing, False)
   | x == 2 = (Just 1, True)
-  | otherwise = foldl' m (Nothing, True) [2 .. (x -1)]
+  | otherwise = L.foldl' m (Nothing, True) [2 .. (x -1)]
   where
     m a b =
       if x `mod` b == 0

@@ -1,6 +1,6 @@
 module Main where
 
-main :: IO ()
+main, ioFunction :: IO ()
 
-main = do putStrLn "Hello, World!"
-          putStrLn "This is haskell."          
+ioFunction = putStrLn "Hello, World!"
+main = ioFunction

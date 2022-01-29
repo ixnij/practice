@@ -1,4 +1,5 @@
 This is a very simple file.
+And, The can not be compiled.
 
 Nothing special.
 
@@ -8,22 +9,22 @@ Nothing special.
 I'll try another form, latex-style ?
 
 \begin{code}
-data Pain = PainEr { detail :: String, time :: Integer }
+  data Pain = PainEr { detail :: String, time :: Integer }
 \end{code}
 
 I'll instance the data Pain as Eq.
 
 \begin{code}
-instance Eq Pain where
-  a (==) b = (detail a == detail b) && (time a == time b)
-  a (/=) b = not $ a == b
+  instance Eq Pain where
+    a (==) b = (detail a == detail b) && (time a == time b)
+    a (/=) b = not $ a == b
 \end{code}
 
 Another example, I'll make my own typeclass.
 
 > class Sample where
-> (>-) :: (Functor a, Num b) => (a -> b) -> c
-> (<->) :: (Functor a, Num b) => f a -> f b -> a -> b -> (a, b)
+>   (>-)  :: (Functor a, Num b) => (a -> b) -> c
+>   (<->) :: (Functor a, Num b) => f a -> f b -> a -> b -> (a, b)
 
 That's it.
 

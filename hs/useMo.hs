@@ -4,11 +4,18 @@ import Prelude hiding (head, tail, fst, snd)
 
 -- import IsPrime (wrapped)
 
-head :: [a] -> a
-head [] = undefined
+head, last :: [a] -> a
+head [] = error "Empty List"
 head (x:_) = x
 
-tail :: [a] -> [a]
+last [] = error "Empty List"
+last x = undefined
+
+init, tail :: [a] -> [a]
+
+init [] = []
+init x = undefined
+
 tail [] = [] 
 tail (_:xs) = xs
 
