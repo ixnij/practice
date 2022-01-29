@@ -1,3 +1,6 @@
+-- Merge 函数的前提是，排序的两个列表必须是有序的才行。
+-- 所以，没有必要认为 Merge 的行为是错误的。
+
 merge :: (Ord a) => [a] -> [a] -> [a]
 merge x [] = x
 merge [] y = y

@@ -1,10 +1,12 @@
-#include <iostream>
+#include <cstdio>
 
-int main(void) {
-    std::cout << "Hello, World!" << std::endl
-              << "From CXX" << std::endl
-              << R"+(
-        The RAW STRING!
-        )+" // do not forget CXX11!
-              << std::endl;
+using namespace std;
+
+int main () {
+  int n = 0, t = 0;
+  while (scanf("%d", &n) != EOF) {
+    printf("%d\n", n);
+    ++ t;
+  }
+  printf("%d\n", t);
 }

@@ -8,6 +8,9 @@ print(table_two[1])
 print("This is another table.")
 print(table_three[3])
 
+for (i, v) in table_one.pair() { } -- TODO
+
+
 -- Mir of index
 
 local binary_searcherr_result = 44;

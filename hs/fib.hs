@@ -25,3 +25,6 @@ fib'' = fst . fibPair
 
 golden :: (Num a, Eq a, Enum a) => a -> [a]
 golden n = undefined
+
+fix f = f (fix f)
+fixFib = fix (\f n -> if n == 0 || n == 1  then 1 else f (n - 1) + f (n - 2))

@@ -1,7 +1,9 @@
 #include <iostream>
+#include <ctime>
 
 using std::cin;
 using std::cout;
+using std::clock;
 
 const int N = 10e6 + 10;
 int a[N], tmp[N];
@@ -45,4 +47,6 @@ int main(int argc, char** argv) {
     for (int i = 0; i < n; ++i) {
         cout << a[i] << " ";
     }
+
+    cout << "\nTime: " << (double)clock() / CLOCKS_PER_SEC << "\n";
 }
