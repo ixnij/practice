@@ -12,3 +12,7 @@ search a xs | m < a = search a behind
             -- > [12,12,12]
             -- > search 0 [1..20]
             -- > []
+            --
+search' :: (Ord a) => a -> [a] -> [a]
+search' a [] = []
+search' a xs | 
