@@ -73,3 +73,9 @@ filterPrime (p : xs) =
   p : filterPrime [x | x <- xs, x `mod` p /= 0]
 
 -- modified from haskell.org :P
+
+factors :: Integral a => a -> [a]
+factors x = [n | n <- [1.. x], x `mod` n == 0]
+  -- 所以，素数就是这个函数所产生的集合的 ..
+soPrimep :: Integral x => x -> Bool
+soPrimep x = factors x == [1, x]
