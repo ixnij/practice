@@ -25,3 +25,12 @@ isSafe p ps = not ((elem p ps) || (sameDiag p ps))
  -- 终止生成。
 
 queen n = [x | x<-positions' n n, noSameRow x, noSameDiag x]
+
+insert n [] = [[n]]
+insert n (n':ns) = (n:n':ns) : [n':ns'|ns' <- insert n ns]
+
+permutation [] = [[]]
+permutation (x:xs) = concat [insert x n | n <- permutation xs]
+
+myq :: Int -> [[Int]] -- myq is my queen
+myq x = [nn | nn <- permutation [1 .. x], noSameDiag nn]
