@@ -8,6 +8,20 @@ noSameRow' [] = True
 noSameRow' (x : xs) = x `notElem` xs && noSameRow' xs
 
 noSameDiag [] = True
-noSameDiag xx@(x : xs) = and [abs (p1 - p) /= abs (l1 - l) | (p, l) <- xs'] && noSameDiag xs
+noSameDiag all@(_ : xs) =
+  and [abs (p1 - p) /= abs (l1 - l) | (p, l) <- xs'] && noSameDiag xs
   where
-    (p1, l1) : xs' = zip [1 ..] xx
+    (p1, l1) : xs' = zip [1 ..] all
+
+queen1 n = [x | x<-positions n n, noSameRow x, noSameDiag x]
+-- 为啥是 queen1 ？这是由于这个算法过于不健壮。还需要进一步优化。
+
+positions' 0 n = [[]]
+positions' k n = [p : ps | ps <- positions' (k - 1) n, p <- [1 .. n], isSafe p ps]
+isSafe p ps = not ((elem p ps) || (sameDiag p ps))
+ where
+ sameDiag p ps = any (\(dist, q) -> abs (p - q) == dist) $ zip [1 ..] ps
+ -- 这个新的生成器能做到遇到从右边到左边的生成出现 [1.....1,1] or [1.....2,1] 的情况，*立刻*
+ -- 终止生成。
+
+queen n = [x | x<-positions' n n, noSameRow x, noSameDiag x]
