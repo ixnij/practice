@@ -1,3 +1,5 @@
+module EightQueens (myq) where
+
 positions 0 _ = [[]]
 positions k n = [x : xs | x <- [1 .. n], xs <- positions (k - 1) n]
 
