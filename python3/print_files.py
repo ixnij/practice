@@ -3,7 +3,7 @@
 
 import os
 
-def fdr(start):
+def fdr(start: str) -> str:
     try:
         pwd = os.path.abspath(start) 
         for i in os.listdir(start):

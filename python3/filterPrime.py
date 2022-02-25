@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-num = int(input("PROMPT> "))
+num : int = input("PROMPT> ")
 if num < 2:
     print("Not.")
 else:
