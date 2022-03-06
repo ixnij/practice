@@ -1,0 +1,10 @@
+#+begin_src haskell
+{-# LANGUAGE TupleSections #-}
+f :: Num t2 => t1 -> (t1, t2)
+f = (,,3)
+#+end_src
+
+#+begin_example
+>> :k (->)
+...
+#+end_example
