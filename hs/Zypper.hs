@@ -13,3 +13,6 @@ next single = single
 prev :: Zypper n -> Zypper n
 prev (Zypper (a:as) b c) = Zypper as a (b:c)
 prev single = single
+
+data Tree a = Leaf | Node a (Tree a) (Tree a)
+data Accl a = Empty | L (Accl a) a (Accl a) | R (Accl a) a (Accl a)
