@@ -3,8 +3,8 @@
 import Prelude hiding (Maybe, Either)
 
 data Exp a where
-  ValueInt :: Int
-  ValueBoolean :: Bool
+  ValueInt :: Int -> Exp Int
+  ValueBoolean :: Bool -> Exp Bool
   Add :: Exp Int -> Exp Int -> Exp Int
   Equal :: Exp Int -> Exp Int -> Exp Bool
 
