@@ -15,3 +15,11 @@ data Maybe a where
 data Either a b where
   Left :: a -> Either a b
   Right :: b -> Either a b
+
+-- make a function for Exp
+
+eval :: Exp a -> a
+eval (ValueInt a) = a
+eval (ValueBoolean a) = a
+eval (Add exp1 exp2) = eval exp1 + eval exp2
+eval (Equal exp1 exp2) = eval exp1 == eval exp2
