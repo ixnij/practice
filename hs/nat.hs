@@ -1,4 +1,13 @@
-data Nat = Zero | Succ Nat deriving (Show, Eq, Ord)
+data Nat = Zero | Succ Nat deriving Ord
+
+instance Eq Nat where
+  (==) Zero Zero = True
+  (==) (Succ a) (Succ b) = a == b
+  (==) _ _ = False
+
+instance Show Nat where
+  show Zero = "It's Zero."
+  show a = "It's " ++ (show $ natToInt a)
 
 natToInt :: Nat -> Integer
 natToInt Zero = 0
