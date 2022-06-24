@@ -26,3 +26,5 @@ out
 # On darwin
 
 .DS_store
+
+rs/toy-proj/target/
