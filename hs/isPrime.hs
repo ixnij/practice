@@ -1,4 +1,5 @@
 module Main where
+
 import qualified IsPrimeLib as I
 
 main :: IO ()

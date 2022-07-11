@@ -1,6 +1,6 @@
 {-# LANGUAGE GADTs #-}
 
-import Prelude hiding (Maybe, Either)
+import Prelude hiding (Either, Maybe)
 
 data Exp a where
   ValueInt :: Int -> Exp Int
@@ -17,7 +17,6 @@ data Either a b where
   Right :: b -> Either a b
 
 -- make a function for Exp
-
 eval :: Exp a -> a
 eval (ValueInt a) = a
 eval (ValueBoolean a) = a

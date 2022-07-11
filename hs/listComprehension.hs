@@ -13,9 +13,10 @@ table =
   ]
 
 analysis :: [(String, Integer)]
-analysis = [(the product, sum cost)|
-                (city, product, cost) <- table,
-                then group by product using groupWith,
-                then sortWith by sum cost]
-
+analysis =
+  [ (the product, sum cost)
+  | (city, product, cost) <- table
+  , then group by product using groupWith
+  , then sortWith by sum cost
+  ]
 -- like sql

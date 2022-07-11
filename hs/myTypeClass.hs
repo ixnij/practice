@@ -6,4 +6,4 @@ class MC a where
   {-# MINIMAL plain | pass #-}
 
 instance (Num a) => MC (Maybe a) where
-  plain (Just x) (Just y) = Just (x+y)
+  plain (Just x) (Just y) = Just (x + y)

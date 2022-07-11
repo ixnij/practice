@@ -1,4 +1,7 @@
-data Nat = Zero | Succ Nat deriving Ord
+data Nat
+  = Zero
+  | Succ Nat
+  deriving (Ord)
 
 instance Eq Nat where
   (==) Zero Zero = True
@@ -15,4 +18,4 @@ natToInt (Succ n) = 1 + natToInt n
 
 intToNat :: Integer -> Nat
 intToNat 0 = Zero
-intToNat n = Succ (intToNat (n-1))
+intToNat n = Succ (intToNat (n - 1))

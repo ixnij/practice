@@ -4,5 +4,7 @@ max' a b
   | otherwise = b
 
 pr :: [x] -> String
-pr = case xs of [] -> "fn"
-                (_:y) -> "wow"
+pr =
+  case xs of
+    [] -> "fn"
+    (_:y) -> "wow"

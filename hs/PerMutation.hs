@@ -1,6 +1,6 @@
 insert :: a -> [a] -> [[a]]
 insert n [] = [[n]]
-insert n (x:xs) = (n:x:xs):[x:xs'|xs'<-insert n xs]
+insert n (x:xs) = (n : x : xs) : [x : xs' | xs' <- insert n xs]
 
 permutation :: [a] -> [[a]]
 permutation [] = [[]]

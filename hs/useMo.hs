@@ -1,9 +1,8 @@
 import IsPrime
-import Prelude hiding (head, tail, fst, snd)
+import Prelude hiding (fst, head, snd, tail)
+
 -- import qualified IsPrime as I
-
 -- import IsPrime (wrapped)
-
 head, last :: [a] -> a
 head [] = error "Empty List"
 head (x:_) = x
@@ -12,11 +11,10 @@ last [] = error "Empty List"
 last x = undefined
 
 init, tail :: [a] -> [a]
-
 init [] = []
 init x = undefined
 
-tail [] = [] 
+tail [] = []
 tail (_:xs) = xs
 
 fst :: (a, b) -> a
