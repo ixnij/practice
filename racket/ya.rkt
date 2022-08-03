@@ -269,3 +269,25 @@
         [else (string-append (first l)
                              " "
                              (ds-l (rest l)))]))
+
+; ra - remove all articles from a text file
+; FileName -> SideEff
+(define (ra fname)
+  (write-file (string-append "no-articles-" fname) (pr# (read-words/line fname))))
+
+(define (pr# l)
+  (cond [(empty? l) ""]
+        [else (string-append (pr## (first l)) "\n"
+                             (pr# (rest l)))]))
+
+(define (pr## l)
+  (cond [(empty? l) ""]
+        [else (string-append
+               (if (or (string=? (first l) "a")
+                      (string=? (first l) "an")
+                      (string=? (first l) "the"))
+                  ""
+                  (string-append " " (first l)))
+               (pr## (rest l)))]))
+
+(define T "TTT.txt")
