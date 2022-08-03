@@ -39,13 +39,13 @@
 
 ; List-of-string -> String
 ; concatenates all strings in l into one long string
- 
+
 (check-expect (cat '()) "")
 (check-expect (cat (cons "a" (cons "b" '()))) "ab")
 (check-expect
   (cat (cons "ab" (cons "cd" (cons "ef" '()))))
   "abcdef")
- 
+
 (define (cat l)
   (cond
     [(empty? l) ""]
@@ -187,10 +187,10 @@
        (<= 0 (posn-y p) 200)))
 
 (define-struct phone [area switch four])
-; A Phone is a structure: 
+; A Phone is a structure:
 ;   (make-phone Three Three Four)
-; A Three is a Number between 100 and 999. 
-; A Four is a Number between 1000 and 9999. 
+; A Three is a Number between 100 and 999.
+; A Four is a Number between 1000 and 9999.
 
 ; LOP is short for List Of Phones
 ; LOP -> LOP
@@ -214,3 +214,58 @@
                     (phone-four (first l)))
                    (first l))
                (replace (rest l)))]))
+
+(require 2htdp/batch-io)
+; SAAS is short for Self As a String
+(define FILE-NAME "ya.rkt")
+(define SAAS
+  (read-words/line FILE-NAME
+             ; Note that this file is stored as "ya.rkt"
+             ))
+
+; An LN is one of:
+; – '()
+; – (cons Los LN)
+; interpretation a list of lines, each is a list of Strings
+
+(define line0 (cons "hello" (cons "world" '())))
+(define line1 '())
+
+(define ln0 '())
+(define ln1 (cons line0 (cons line1 '())))
+
+; LN -> List-of-numbers
+; determines the number of words on each line
+
+(check-expect (words-on-line ln0) '())
+(check-expect (words-on-line ln1) (cons 2 (cons 0 '())))
+
+(define (words-on-line ln)
+  (cond
+    [(empty? ln) '()]
+    [else (cons (length (first ln))
+                (words-on-line (rest ln)))]))
+(define (sum l)
+  (cond [(empty? l) 0]
+        [else (+ (first l) (sum (rest l)))]))
+
+(define (sum.v2 l)
+  (cond [(empty? l) 0]
+        [else (+ (sum (first l))
+                 (sum.v2 (rest l)))]))
+
+; collapse
+; LOL -> String
+; where LOL like
+; the result of function read-words/line
+
+(define (collapse l)
+  (cond [(empty? l) ""]
+        [else (string-append (ds-l (first l)) "\n"
+                             (collapse (rest l)))]))
+
+(define (ds-l l)
+  (cond [(empty? l) ""]
+        [else (string-append (first l)
+                             " "
+                             (ds-l (rest l)))]))
