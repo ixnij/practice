@@ -326,3 +326,24 @@
 
 ; I have graduated from bsl from now on ;-)
 
+(define ATVSS (list (list 1 2)
+      (list (list 2)
+            )))
+
+(check-expect (list 1 2 3
+                    (list 3)
+                    (cons 1 (cons 3 '()))
+                    (list))
+              (cons 1
+                    (cons 2
+                          (cons 3
+                                (cons (cons 3
+                                            '())
+                                      (cons
+                                      (cons 1
+                                            (cons 3
+                                                  '()))
+                                      (cons
+                                       '()
+                                       '())))))))
+
