@@ -391,6 +391,7 @@
               (list (list "a") (list "a" "b") (list "a" "b" "c"))
               )
 
+; 2 - 11-Design-Composition
 (define (prefixes l)
   (cond [(empty? l) '()]
         [else (reverse (revv (pf# (reverse l))))]))
@@ -403,3 +404,19 @@
 (define (pf# l)
   (cond [(empty? l) '()]
         [else (cons l (pf# (rest l)))]))
+
+; ListOfNumbers is one of:
+; - (cons Number '())
+; - (cons Number ListOfNumbers)
+; LON is short for ListOfNumbers
+
+; LON  -> Boolean
+(define (sorted>?# l)
+  (cond [(empty? (rest l)) #true]
+        [(cons? l)
+         (and (>= (first l)
+                  (second l))
+              (sorted>?# (rest l)))]))
+
+(check-satisfied (sort> '(312 3144 12341234 2134129 12323 432 523 6349 54050 43 100 -43 4322 -23420 4 -4))
+                 sorted>?#)
