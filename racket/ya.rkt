@@ -353,9 +353,9 @@
   (cond
     [(empty? l) '()]
     [(cons? l) (insert (first l) (sort> (rest l)))]))
- 
+
 ; Number List-of-numbers -> List-of-numbers
-; inserts n into the sorted list of numbers l 
+; inserts n into the sorted list of numbers l
 (define (insert n l)
   (cond
     [(empty? l) (cons n '())]
@@ -383,4 +383,23 @@
          (cond [(= n (first l)) #true]
                [(> n (first l)) #false]
                [else (search-sorted n (rest l))])]))
-  
+
+(check-expect (prefixes '()) '())
+(check-expect (prefixes (list "a")) (list (list "a")))
+(check-expect (prefixes (list "a" "b")) (list (list "a") (list "a" "b")))
+(check-expect (prefixes (list "a" "b" "c"))
+              (list (list "a") (list "a" "b") (list "a" "b" "c"))
+              )
+
+(define (prefixes l)
+  (cond [(empty? l) '()]
+        [else (reverse (revv (pf# (reverse l))))]))
+
+(define (revv l)
+  (cond [(empty? l) '()]
+        [else (cons (reverse (first l))
+                    (revv (rest l)))]))
+
+(define (pf# l)
+  (cond [(empty? l) '()]
+        [else (cons l (pf# (rest l)))]))
