@@ -347,3 +347,40 @@
                                        '()
                                        '())))))))
 
+; List-of-numbers -> List-of-numbers
+; produces a sorted version of l
+(define (sort> l)
+  (cond
+    [(empty? l) '()]
+    [(cons? l) (insert (first l) (sort> (rest l)))]))
+ 
+; Number List-of-numbers -> List-of-numbers
+; inserts n into the sorted list of numbers l 
+(define (insert n l)
+  (cond
+    [(empty? l) (cons n '())]
+    [else (if (>= n (first l))
+              (cons n l)
+              (cons (first l) (insert n (rest l))))]))
+
+(check-expect (sort> (list 1 4 32 3 4))
+              (list 32 4 4 3 1))
+
+(check-expect (search-sorted 2 (list 3 2 1))
+              #true)
+(check-expect (search-sorted 32 (list 31 2 0)
+                             )
+              #false)
+(check-expect (search-sorted 21 (list 23 22 21 2 1 0 -1))
+              #true)
+(check-expect (search-sorted 123412341234123 '())
+              #false)
+; Number SL -> Boolean
+
+(define (search-sorted n l)
+  (cond [(empty? l) #false]
+        [else
+         (cond [(= n (first l)) #true]
+               [(> n (first l)) #false]
+               [else (search-sorted n (rest l))])]))
+  
