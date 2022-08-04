@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-beginner-reader.ss" "lang")((modname ya) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname ya) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 (define tl (cons #true '()))
 (define tl1 (cons #false '()))
 (define tl2 (cons #true (cons #false '())))
@@ -291,3 +291,38 @@
                (pr## (rest l)))]))
 
 (define T "TTT.txt")
+
+(define-struct editor [pre post])
+; An Editor is a structure:
+;   (make-editor Lo1S Lo1S)
+
+; Sample Lo1S(short for List of 1Strings)
+; one of below:
+; - '()
+; - (cons 1String Lo1S)
+
+(define good (cons "g" (cons "o" (cons "o" (cons "d" '())))))
+(define nice (cons "n" (cons "i" (cons "c" (cons "e" '())))))
+
+; > (implode good)
+; "good"
+
+(define E1 (make-editor good nice))
+
+(require 2htdp/image)
+(define ET (empty-scene 500 20))
+(define FONT-SIZE 20)
+(define FONT-COLOR "black")
+(define (txt s)
+  (text s FONT-SIZE FONT-COLOR))
+
+#;
+(require 2htdp/universe)
+#;
+(define (main-a state)
+  (big-bang state
+    [on-key ...]
+    [to-draw ...]))
+
+; I have graduated from bsl from now on ;-)
+
