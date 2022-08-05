@@ -513,3 +513,40 @@
   (cond [(empty? l) d]
         [else (if (string=? (first (first l)) key) (first l)
                   (find-association key (rest l) d))]))
+#;
+(check-satisfied
+(insert-everywhere/in-all-words "d"
+  (list (list "e" "r")
+        (list "r" "e")))
+right#1?)
+
+(define CHL (list (list "d" "e" "r")
+      (list "e" "d" "r")
+      (list "e" "r" "d")
+      (list "d" "r" "e")
+      (list "r" "d" "e")
+      (list "r" "e" "d")))
+#;
+(define (right#1? l)
+  (right-hpr l CHL ...))
+#;
+(define (right-hpr l)
+  (cond [(empty? l) #false]
+        [else (and (right-hpr (...)))]))
+
+(define (insert-everywhere/in-all-words letter l)
+  (cond [(empty? l) '()]
+        [else (append (insert-everywhere/in-a-word '() letter (first l))
+                      (insert-everywhere/in-all-words letter (rest l)))]))
+
+(check-expect (insert-everywhere/in-a-word '() "d" (list "e" "r"))
+      (list
+       (list "d" "e" "r")
+      (list "e" "d" "r")
+      (list "e" "r" "d")))
+
+(define (insert-everywhere/in-a-word pre letter post)
+  (cond [(empty? post) (list (append pre (list letter)))]
+        [else (cons (append pre (list letter) post)
+                    (insert-everywhere/in-a-word (append pre (list (first post))) letter
+                                                 (rest post)))]))
