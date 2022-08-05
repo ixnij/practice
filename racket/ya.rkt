@@ -420,3 +420,75 @@
 
 (check-satisfied (sort> '(312 3144 12341234 2134129 12323 432 523 6349 54050 43 100 -43 4322 -23420 4 -4))
                  sorted>?#)
+
+; Real-World Data!
+; I'm using macOS (OS X), so my location is
+(define LOCATION "/usr/share/dict/words")
+
+; Dictionary is a ListOfStrings
+(define DICT-LOS (read-lines LOCATION))
+
+; A Letter is one of the following 1Strings:
+; – "a"
+; – ...
+; – "z"
+; or, equivalently, a member? of this list:
+(define LETTERS
+  (explode "abcdefghijklmnopqrstuvwxyz"))
+
+(check-expect (starts-with# "a" '("abs" "apartment" "amusement" "enjoys"
+                                        "electronic" "enter" "kilo"))
+              3)
+; Letter Dictionary -> Number
+
+(define (starts-with# l d)
+  (cond [(empty? d) 0]
+        [else (if (beg? l (first d))
+                  (add1 (starts-with# l (rest d)))
+         (starts-with# l (rest d)))]))
+
+(define (beg? l w)
+  (string=? l (string-ith w 0)))
+
+; Dictionary -> LPA
+; LPA likes (list (list "a" 3) (list "b" 2) ...)
+
+(define (count-by-letter d)
+  (f## LETTERS d))
+
+(check-expect (f## '("a" "b") (list "a" "abstract" "abbrev" "binary" "bs" "cs" "asfd" "kkfd"))
+              (list (list "a" 4)
+                    (list "b" 2)))
+
+(check-expect (most-frequent (list "a" "abstract" "abbrev" "binary" "bs" "cs" "asfd" "kkfd"))
+              (list "a" 4)
+              )
+
+(define (f## l d)
+  (cond [(empty? l) '()]
+        [else
+  (cons (list (first l) (starts-with# (first l) d))
+        (f## (rest l) d))]))
+
+(define (most-frequent d)
+  (first (sort# (count-by-letter d))))
+
+(define (sort# l)
+  (cond
+    [(empty? l) '()]
+    [(cons? l) (insert# (first l) (sort# (rest l)))]))
+
+
+(define (insert# n l)
+  (cond
+    [(empty? l) (cons n '())]
+    [else (if (comp-dict n (first l))
+              (cons n l)
+              (cons (first l) (insert# n (rest l))))]))
+
+; POS POS -> Boolean
+; POS is
+; (list LETTERS Number)
+
+(define (comp-dict n l)
+  (> (second n) (second l)))
