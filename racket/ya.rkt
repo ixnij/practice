@@ -492,3 +492,24 @@
 
 (define (comp-dict n l)
   (> (second n) (second l)))
+
+; LA is short for List of Association
+; like (list Association)
+
+; Association
+; (list Key Value)
+
+; String LA Any -> Association
+
+(check-expect (find-association "Ps" (list (list "a" 2)
+                                           (list "pfds" 23)
+                                           (list "asdffa" 22)
+                                           (list "Ps" "ffff")
+                                           (list "fff" 2222))
+                                "zero")
+              (list "Ps" "ffff"))
+
+(define (find-association key l d)
+  (cond [(empty? l) d]
+        [else (if (string=? (first (first l)) key) (first l)
+                  (find-association key (rest l) d))]))
