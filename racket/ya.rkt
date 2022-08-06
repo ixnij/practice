@@ -43,8 +43,8 @@
 (check-expect (cat '()) "")
 (check-expect (cat (cons "a" (cons "b" '()))) "ab")
 (check-expect
-  (cat (cons "ab" (cons "cd" (cons "ef" '()))))
-  "abcdef")
+ (cat (cons "ab" (cons "cd" (cons "ef" '()))))
+ "abcdef")
 
 (define (cat l)
   (cond
@@ -56,15 +56,15 @@
 ; - (cons Any NE)
 
 (check-expect (sorted>? (cons 1
-  (cons 2
-    '()))) #false)
+                              (cons 2
+                                    '()))) #false)
 (check-expect (sorted>? (cons 0
-  (cons 3
-    (cons 2
-      '())))) #false)
+                              (cons 3
+                                    (cons 2
+                                          '())))) #false)
 (check-expect (sorted>?(cons 3
-  (cons 2
-    '()))) #true)
+                             (cons 2
+                                   '()))) #true)
 
 ; Note that sorted>? is designed for NE List,
 ; which means that:
@@ -104,7 +104,7 @@
 (define (colors rd)
   (cond [(string? rd) rd]
         [else (string-append (layer-color rd) ", "
-                      (colors (layer-rd rd)))]))
+                             (colors (layer-rd rd)))]))
 
 (define (inner rd)
   (cond [(string? rd) rd]
@@ -113,8 +113,8 @@
 ; String String List -> List
 ; substitute is a replacer which replaces given old to new in l.
 (check-expect (substitute "os" "ls"
-              (cons "os" (cons "33" (cons "aa"
-                                          (cons "os" '())))))
+                          (cons "os" (cons "33" (cons "aa"
+                                                      (cons "os" '())))))
               (cons "ls" (cons "33" (cons "aa"
                                           (cons "ls" '())))))
 (define (substitute old new l)
@@ -122,7 +122,7 @@
         [else (cons (if (string=? (first l) old)
                         new
                         (first l))
-               (substitute old new (rest l)))]))
+                    (substitute old new (rest l)))]))
 
 ; ListOfPosns -> Posn
 
@@ -133,11 +133,11 @@
                                  (make-posn 3 4)
                                  '()))))
               (cons (make-posn 1 3)
-                               (cons
-                                (make-posn 2 4)
-                                (cons
-                                 (make-posn 3 5)
-                                 '()))))
+                    (cons
+                     (make-posn 2 4)
+                     (cons
+                      (make-posn 3 5)
+                      '()))))
 
 (define (translate pl)
   (cond [(empty? pl) pl]
@@ -164,13 +164,13 @@
                               (make-posn 2000 2000)
                               (cons
                                (make-posn 101 201)
-                              (cons
-                               (make-posn 23 2001)
-                               '())))))))
+                               (cons
+                                (make-posn 23 2001)
+                                '())))))))
               (cons (make-posn 1 2)
-                           (cons
-                            (make-posn 2 33)
-                            '())))
+                    (cons
+                     (make-posn 2 33)
+                     '())))
 
 (define (legal l)
   (cond [(empty? l) '()]
@@ -201,8 +201,8 @@
               (cons (make-phone 713 234 943) '()))))
 (check-expect (replace testLOP)
               (cons (make-phone 281 333 333)
-        (cons (make-phone 222 232 452)
-              (cons (make-phone 281 234 943) '()))))
+                    (cons (make-phone 222 232 452)
+                          (cons (make-phone 281 234 943) '()))))
 
 (define (replace l)
   (cond [(empty? l) l]
@@ -220,8 +220,8 @@
 (define FILE-NAME "ya.rkt")
 (define SAAS
   (read-words/line FILE-NAME
-             ; Note that this file is stored as "ya.rkt"
-             ))
+                   ; Note that this file is stored as "ya.rkt"
+                   ))
 
 ; An LN is one of:
 ; – '()
@@ -284,10 +284,10 @@
   (cond [(empty? l) ""]
         [else (string-append
                (if (or (string=? (first l) "a")
-                      (string=? (first l) "an")
-                      (string=? (first l) "the"))
-                  ""
-                  (string-append " " (first l)))
+                       (string=? (first l) "an")
+                       (string=? (first l) "the"))
+                   ""
+                   (string-append " " (first l)))
                (pr## (rest l)))]))
 
 (define T "TTT.txt")
@@ -321,14 +321,14 @@
 #;
 (define (main-a state)
   (big-bang state
-    [on-key ...]
-    [to-draw ...]))
+            [on-key ...]
+            [to-draw ...]))
 
 ; I have graduated from bsl from now on ;-)
 
 (define ATVSS (list (list 1 2)
-      (list (list 2)
-            )))
+                    (list (list 2)
+                          )))
 
 (check-expect (list 1 2 3
                     (list 3)
@@ -340,12 +340,12 @@
                                 (cons (cons 3
                                             '())
                                       (cons
-                                      (cons 1
-                                            (cons 3
-                                                  '()))
-                                      (cons
-                                       '()
-                                       '())))))))
+                                       (cons 1
+                                             (cons 3
+                                                   '()))
+                                       (cons
+                                        '()
+                                        '())))))))
 
 ; List-of-numbers -> List-of-numbers
 ; produces a sorted version of l
@@ -445,7 +445,7 @@
   (cond [(empty? d) 0]
         [else (if (beg? l (first d))
                   (add1 (starts-with# l (rest d)))
-         (starts-with# l (rest d)))]))
+                  (starts-with# l (rest d)))]))
 
 (define (beg? l w)
   (string=? l (string-ith w 0)))
@@ -458,7 +458,7 @@
 
 (check-expect (f## '("a" "b") (list "a" "abstract" "abbrev" "binary" "bs" "cs" "asfd" "kkfd"))
               (list (list "a" 4)
-                    (list "b" 2)))
+
 
 (check-expect (most-frequent (list "a" "abstract" "abbrev" "binary" "bs" "cs" "asfd" "kkfd"))
               (list "a" 4)
@@ -467,8 +467,8 @@
 (define (f## l d)
   (cond [(empty? l) '()]
         [else
-  (cons (list (first l) (starts-with# (first l) d))
-        (f## (rest l) d))]))
+         (cons (list (first l) (starts-with# (first l) d))
+               (f## (rest l) d))]))
 
 (define (most-frequent d)
   (first (sort# (count-by-letter d))))
@@ -515,17 +515,17 @@
                   (find-association key (rest l) d))]))
 #;
 (check-satisfied
-(insert-everywhere/in-all-words "d"
-  (list (list "e" "r")
-        (list "r" "e")))
-right#1?)
+ (insert-everywhere/in-all-words "d"
+                                 (list (list "e" "r")
+                                       (list "r" "e")))
+ right#1?)
 
 (define CHL (list (list "d" "e" "r")
-      (list "e" "d" "r")
-      (list "e" "r" "d")
-      (list "d" "r" "e")
-      (list "r" "d" "e")
-      (list "r" "e" "d")))
+                  (list "e" "d" "r")
+                  (list "e" "r" "d")
+                  (list "d" "r" "e")
+                  (list "r" "d" "e")
+                  (list "r" "e" "d")))
 #;
 (define (right#1? l)
   (right-hpr l CHL ...))
@@ -540,10 +540,10 @@ right#1?)
                       (insert-everywhere/in-all-words letter (rest l)))]))
 
 (check-expect (insert-everywhere/in-a-word '() "d" (list "e" "r"))
-      (list
-       (list "d" "e" "r")
-      (list "e" "d" "r")
-      (list "e" "r" "d")))
+              (list
+               (list "d" "e" "r")
+               (list "e" "d" "r")
+               (list "e" "r" "d")))
 
 (define (insert-everywhere/in-a-word pre letter post)
   (cond [(empty? post) (list (append pre (list letter)))]
@@ -556,11 +556,11 @@ right#1?)
 
 (define (worm-main a b)
   (big-bang (make-worm a b)
-    [to-draw render-worm]
-    [on-tick worm-tick 0.5]
-    [stop-when worm-stop]
-    [on-key worm-key]
-    ))
+            [to-draw render-worm]
+            [on-tick worm-tick 0.5]
+            [stop-when worm-stop]
+            [on-key worm-key]
+            ))
 
 (define WORM (circle 10 "solid" "red"))
 
@@ -581,7 +581,7 @@ right#1?)
         [(key=? k "down") (make-worm (worm-x s) (+ (worm-y s) 10))]
         [else
          s]
-         )
+        )
   )
 
 (check-expect (worm-tick (make-worm 0 0))
