@@ -310,7 +310,7 @@
 (define E1 (make-editor good nice))
 
 (require 2htdp/image)
-(define ET (empty-scene 500 20))
+(define ET (empty-scene 500 500))
 (define FONT-SIZE 20)
 (define FONT-COLOR "black")
 (define (txt s)
@@ -550,3 +550,46 @@ right#1?)
         [else (cons (append pre (list letter) post)
                     (insert-everywhere/in-a-word (append pre (list (first post))) letter
                                                  (rest post)))]))
+
+(require 2htdp/universe)
+(define-struct worm [x y])
+
+(define (worm-main a b)
+  (big-bang (make-worm a b)
+    [to-draw render-worm]
+    [on-tick worm-tick 0.5]
+    [stop-when worm-stop]
+    [on-key worm-key]
+    ))
+
+(define WORM (circle 10 "solid" "red"))
+
+(check-expect (render-worm (make-worm 0 0))
+              (place-image WORM 0 0 ET))
+(define (render-worm s)
+  (place-image WORM (worm-x s)
+               (worm-y s)
+               ET))
+
+(check-expect (worm-key (make-worm 0 0) "left")
+              (make-worm -10 0))
+;(define (sub1 x) (- x 5))
+(define (worm-key s k)
+  (cond [(key=? k "left") (make-worm (- (worm-x s) 10) (worm-y s))]
+        [(key=? k "right") (make-worm (+ (worm-x s) 10) (worm-y s))]
+        [(key=? k "up") (make-worm (worm-x s) (- (worm-y s) 10))]
+        [(key=? k "down") (make-worm (worm-x s) (+ (worm-y s) 10))]
+        [else
+         s]
+         )
+  )
+
+(check-expect (worm-tick (make-worm 0 0))
+              (make-worm 1 1))
+(define (worm-tick s)
+  (make-worm (add1 (worm-x s)) (add1 (worm-y s))))
+(check-expect (worm-stop (make-worm 20 200))
+              #false)
+(define (worm-stop s)
+  (= (worm-x s) 490))
+; There are some problems with the WORM, to be fixed
