@@ -62,9 +62,9 @@
                               (cons 3
                                     (cons 2
                                           '())))) #false)
-(check-expect (sorted>?(cons 3
-                             (cons 2
-                                   '()))) #true)
+(check-expect (sorted>? (cons 3
+                              (cons 2
+                                    '()))) #true)
 
 ; Note that sorted>? is designed for NE List,
 ; which means that:
@@ -458,6 +458,7 @@
 
 (check-expect (f## '("a" "b") (list "a" "abstract" "abbrev" "binary" "bs" "cs" "asfd" "kkfd"))
               (list (list "a" 4)
+                    (list "b" 2)))
 
 
 (check-expect (most-frequent (list "a" "abstract" "abbrev" "binary" "bs" "cs" "asfd" "kkfd"))
@@ -592,4 +593,24 @@
               #false)
 (define (worm-stop s)
   (= (worm-x s) 490))
-; There are some problems with the WORM, to be fixed
+
+(define-struct transition [current next])
+; FSM-State: Color
+(define fsm-traffic
+  (list (make-transition "red" "green")
+        (make-transition "green" "yellow")
+        (make-transition "yellow" "red")))
+
+; FSM FSM-State -> FSM-State
+; finds the state representing current in transitions
+; and retrieves the next field 
+(check-expect (find fsm-traffic "red") "green")
+(check-expect (find fsm-traffic "green") "yellow")
+(check-error (find fsm-traffic "black")
+             "not found: black")
+
+(define (find transitions current)
+  (cond [(empty? transitions) (error (string-append "not found: " current))]
+        [else (if (string=? current (transition-current (first transitions)))
+                  (transition-next (first transitions))
+                  (find (rest transitions) current))]))
