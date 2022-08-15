@@ -568,3 +568,17 @@
                    (inf-min (rest l)))]))
 (check-expect (inf-min SAMPLE-DATA-2)
               1)
+
+(check-error (my-expt 0 0)
+             "my-expt: /")
+(check-expect (my-expt 20 2)
+            (expt 2 20))
+(define (my-expt counter n)
+  (local ((define (in-expt counter' n')
+            (cond [(zero? counter') 1]
+                  [else (* n (in-expt (sub1 counter')
+                                      n'))])))
+    (if (and (zero? counter)
+             (zero? n))
+        (error "my-expt: /")
+        (in-expt counter n))))
