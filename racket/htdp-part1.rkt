@@ -1,6 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-intermediate-reader.ss" "lang")((modname ya) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname htdp-part1) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 (define tl (cons #true '()))
 (define tl1 (cons #false '()))
 (define tl2 (cons #true (cons #false '())))
@@ -174,7 +174,7 @@
 
 (require 2htdp/batch-io)
 ; SAAS is short for Self As a String
-(define FILE-NAME "ya.rkt")
+(define FILE-NAME "htdp-part1.rkt")
 (define SAAS
   (read-words/line FILE-NAME ; Note that this file is stored as "ya.rkt"
                    ))
@@ -574,10 +574,10 @@
 (check-expect (my-expt 20 2)
             (expt 2 20))
 (define (my-expt counter n)
-  (local ((define (in-expt counter' n')
-            (cond [(zero? counter') 1]
-                  [else (* n (in-expt (sub1 counter')
-                                      n'))])))
+  (local ((define (in-expt counterz nz)
+            (cond [(zero? counterz) 1]
+                  [else (* n (in-expt (sub1 counterz)
+                                      nz))])))
     (if (and (zero? counter)
              (zero? n))
         (error "my-expt: /")
